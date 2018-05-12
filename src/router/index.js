@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import food from 'components/food/food'
+import seller from 'components/seller/seller'
 import goods from 'components/goods/goods'
 import ratings from 'components/ratings/ratings'
 
@@ -15,8 +15,8 @@ export default new Router({
       redirect: '/goods'
     },
     {
-      path: '/food',
-      component: food
+      path: '/seller',
+      component: seller
     },
     {
       path: '/goods',

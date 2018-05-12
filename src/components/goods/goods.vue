@@ -177,7 +177,7 @@ export default {
         z-index 10
         margin-top -1px
         font-weight 700
-        color #fff
+        background-color #fff
       .icon
         display inline-block
         vertical-align top

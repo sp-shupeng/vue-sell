@@ -9,7 +9,7 @@
         <router-link to='/ratings'>评论</router-link>
       </div>
       <div class="tab-item">
-        <router-link to='/food'>商家</router-link>
+        <router-link to='/seller'>商家</router-link>
       </div>
     </div>
     <keep-alive>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+  import { urlParse } from 'common/js/util'
   import header from 'components/header/header'
 
   const ERR_OK = 0;
@@ -26,15 +27,20 @@
   export default {
     data(){
       return{
-        seller:{}
+        seller:{
+          id:(()=>{
+            let queryParam = urlParse();
+            return queryParam.id;
+          })()
+        }
       }
     },
     created(){
-      this.$http.get('/api/seller').then((response)=>{
+      const url = '/api/seller';
+      this.$http.get(url+'?id='+this.seller.id).then((response)=>{
         response = response.body;
         if(response.errno === ERR_OK){
-          this.seller = response.data;
-          console.log(this.seller);
+          this.seller = Object.assign({},this.seller,response.data);
         }
       })
     },
